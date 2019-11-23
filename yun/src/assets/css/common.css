@@ -1,0 +1,33 @@
+html{
+    background-color: #f8f8ff;
+}
+
+img[lazy=loading] {
+    transform: scale(.3);
+    /* 缩小到0.3倍 */
+}
+
+.page-info-list{
+    height: calc(100vh - 380px);
+    /* 减去top中的height */
+    overflow: hidden;
+}
+
+.page{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #f3f4f9;
+    z-index: 99;
+    overflow: scroll;
+    /* 因为前面position设置了fixed使页面可以滑动 */
+}
+.slide-enter-active,.slide-leave-active {
+    transition: all .3s;
+}
+
+.slide-enter,.slide-leave-to {
+    transform: translate3d(100%, 0, 0);
+}
