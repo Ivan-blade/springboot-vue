@@ -6,7 +6,7 @@
         <div>
             <div class="ids">
                 <div class="is">
-                    <img src="../assets/images/first.jpg" alt="">
+                    <img src="../assets/images/first.jpg" alt="" @click="goToLogin">
                 </div>
                 <div class="homeInfo">
                     <p class="fs">188****3273<span class="fb">未认证</span></p>
@@ -14,13 +14,13 @@
                 </div>
             </div>
             <div>
-                <p class="sum">仅需身份证认证即可认证，点击认证></p>
+                <p class="sum">请先提交认证，认证通过才能联系货主哦！></p>
             </div>
         </div>
         <div class="tools">
             <p class="top-list">常用工具</p>
             <ul class="home-list">
-                <li class="first">
+                <li>
                     <div>
                         <i class="iconfont icon-kehufuwu"></i>
                     </div>
@@ -38,22 +38,10 @@
                     </div>
                     <p>意见反馈</p>
                 </li>
-                <li class="last">
-                    <div>
-                        <i class="iconfont icon-shujutongji"></i>
-                    </div>
-                    <p>数据统计</p>
-                </li>
             </ul>
             <p class="top-list">我的服务</p>
             <ul class="home-list">
-                <li class="first">
-                    <div>
-                        <i class="iconfont icon-juliceliang"></i>
-                    </div>
-                    <p>里程计算</p>
-                </li>
-                <li class="last">
+                <li>
                     <div>
                         <i class="iconfont icon-wj-flyz"></i>
                     </div>
@@ -66,7 +54,14 @@
 
 <script>
 export default {
-  name: 'myhome'
+  name: 'myhome',
+  methods: {
+    goToLogin () {
+      this.$router.push({
+        name: 'home'
+      })
+    }
+  }
 }
 </script>
 
@@ -135,9 +130,10 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
         padding-bottom: 30px;
         li{
+            margin: 15px 0;
+            width: 25%;
             text-align: center;
             div{
                 margin-top: 25px;
@@ -151,16 +147,12 @@ export default {
                 font-size: 24px;
             }
         }
-        .first{
-            margin-left: 30px;
-        }
-        .last{
-            margin-right: 20px;
-        }
     }
     .top-list{
         padding-left: 20px;
-        font-size: 32px;
+        font-size: 25px;
+        letter-spacing: 2px;
+        font-family: "Microsoft soft";
     }
 }
 </style>
