@@ -4,6 +4,12 @@
             "type": "java",
             "name": "CodeLens (Launch) - Application",
             "request": "launch",
+            "mainClass": "com.alibaba.Application"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Application",
+            "request": "launch",
             "mainClass": "com.alibaba.Application",
             "projectName": "springboot-login"
         }

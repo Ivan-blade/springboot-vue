@@ -14,15 +14,23 @@
                 </ul>
             </div>
         </v-header>
+        <v-scroll class="scroll-class">
+            <item-list :data="OrderInfo"></item-list>
+        </v-scroll>
     </div>
 </template>
 
 <script>
+import ItemList from './item-list'
+import Scroll from './scroll'
+import axios from 'axios'
 import mHeader from './mHeader'
 export default {
   name: 'item-today',
   components: {
-    'v-header': mHeader
+    'v-header': mHeader,
+    'v-scroll': Scroll,
+    'item-list': ItemList
   },
   data () {
     return {
@@ -30,7 +38,8 @@ export default {
       isRotate1: false,
       isRotate2: false,
       isRotate3: false,
-      isRotate4: false
+      isRotate4: false,
+      OrderInfo: []
     }
   },
   methods: {
@@ -51,41 +60,24 @@ export default {
     },
     changeIntoSecond () {
       this.pageIndex = 2
+    },
+    async getOrderInfo () {
+      const { data } = await axios.get('/bpi/item')
+      console.log(data)
+      this.OrderInfo = data
     }
+  },
+  mounted () {
+    this.getOrderInfo()
   }
 }
 </script>
 
 <style lang="less" scoped>
-.pageInfo{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    line-height: 54px;
-    font-size: 26px;
-    .info-deal{
-        padding: 3px 8px;
-        border: 1px solid white;
-        width: 14%;
-        &:hover{
-            color: #f8763a;
-            background-color: white;
-        }
-    }
-    li{
-        letter-spacing: 2px;
-    }
-    .pageInfo-first{
-        position: fixed;
-        left: 20px;
-        font-size: 28px;
-    }
-    .pageInfo-last{
-        position: fixed;
-        right: 20px;
-        font-size: 28px;
-    }
+.scroll-class{
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 90px;
 }
 </style>

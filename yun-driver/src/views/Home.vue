@@ -23,6 +23,9 @@
           </li>
         </ul>
     </div>
+    <!-- <div class="content-last" @click="driver">
+        <p>订单</p>
+    </div> -->
   </div>
 </template>
 
@@ -61,9 +64,10 @@ export default {
           password: this.password
         }
       })
-      console.log(data)
+      console.log(data.detail.id)
       if (!data.success) {
         this.res = '用户名或密码错误，请重新输入'
+        this.id = data.detail.id
       } else if (data.success) {
         this.isRegist = true
         this.$router.push({
@@ -71,6 +75,18 @@ export default {
         })
       }
     }
+    // async driver () {
+    //   const { data } = await axios({
+    //     method: 'post',
+    //     url: '/api/order/driver',
+    //     params: {
+    //       id: 4,
+    //       DriverName: 'saber',
+    //       OrderStatus: 2
+    //     }
+    //   })
+    //   console.log(data)
+    // }
   }
 }
 </script>
@@ -145,5 +161,21 @@ export default {
       }
     }
   }
+  .content-last{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 200px;
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px 20px;
+        background-color: #ee4e14;
+        color: white;
+        p{
+          letter-spacing: 6px;
+          font-size: 32px;
+          padding-left: 55px;
+        }
+    }
 }
 </style>

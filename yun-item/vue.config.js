@@ -11,6 +11,13 @@ module.exports = {
                 pathRewrite: {
                     '/api': '/'
                 }
+            },
+            'bpi': {
+                target: 'http://localhost:8858',
+                changeOrigin:false,
+                pathRewrite: {
+                    '/bpi': '/'
+                }
             }
         }
     }

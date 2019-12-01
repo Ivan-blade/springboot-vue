@@ -5,6 +5,7 @@ import ItemTeen from '../components/item-teen.vue'
 import ItemToday from '../components/item-today.vue'
 import Service from '../components/service.vue'
 import MyHome from '../components/myhome.vue'
+import Order from '../components/order.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/myhome',
     name: 'myhome',
     component: MyHome
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order
   }
 ]
 

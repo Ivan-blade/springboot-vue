@@ -9,8 +9,12 @@
       <p>当天货源</p>
     </li>
     <li>
-      <div><i class="iconfont icon-dingdan" @click="goToOrder"></i></div>
+      <div><i class="iconfont icon-dingdan" @click="goToService"></i></div>
       <p>服务</p>
+    </li>
+    <li>
+      <div><i class="iconfont icon-dingdan" @click="goToOrder"></i></div>
+      <p>订单</p>
     </li>
     <li class="mr">
       <div><i class="iconfont icon-wode1" @click="goToHome"></i></div>
@@ -34,6 +38,11 @@ export default {
       })
     },
     goToOrder () {
+      this.$router.push({
+        name: 'order'
+      })
+    },
+    goToService () {
       this.$router.push({
         name: 'service'
       })

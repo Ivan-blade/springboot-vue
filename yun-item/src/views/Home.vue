@@ -23,6 +23,9 @@
           </li>
         </ul>
     </div>
+    <!-- <div class="content-last" @click="order">
+        <p>发货</p>
+    </div> -->
   </div>
 </template>
 
@@ -37,7 +40,8 @@ export default {
       username: '',
       password: '',
       isRegist: false,
-      res: null
+      res: null,
+      id: 5
     }
   },
   methods: {
@@ -61,9 +65,10 @@ export default {
           password: this.password
         }
       })
-      console.log(data)
+      console.log(data.detail.id)
       if (!data.success) {
         this.res = '用户名或密码错误，请重新输入'
+        this.id = data.detail.id
       } else if (data.success) {
         this.isRegist = true
         this.$router.push({
@@ -71,6 +76,22 @@ export default {
         })
       }
     }
+    // async order () {
+    //   console.log(this.id)
+    //   console.log(this.username)
+    //   const { data } = await axios({
+    //     method: 'post',
+    //     url: '/api/order/item',
+    //     params: {
+    //       id: 5,
+    //       ItemName: this.username,
+    //       CarSize: '小型',
+    //       Origin: '上海',
+    //       Destination: '杭州'
+    //     }
+    //   })
+    //   console.log(data)
+    // }
   }
 }
 </script>
@@ -145,5 +166,21 @@ export default {
       }
     }
   }
+  .content-last{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 200px;
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px 20px;
+        background-color: #ee4e14;
+        color: white;
+        p{
+          letter-spacing: 6px;
+          font-size: 32px;
+          padding-left: 55px;
+        }
+    }
 }
 </style>

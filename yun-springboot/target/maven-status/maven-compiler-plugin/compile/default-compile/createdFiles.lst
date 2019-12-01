@@ -1,6 +1,0 @@
-com\alibaba\mapper\UserMapper.class
-com\alibaba\bean\User.class
-com\alibaba\service\UserService.class
-com\alibaba\bean\Result.class
-com\alibaba\controller\UserController.class
-com\alibaba\Application.class
