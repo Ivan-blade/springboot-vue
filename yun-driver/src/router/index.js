@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import ItemTeen from '../components/item-teen.vue'
-import ItemToday from '../components/item-today.vue'
-import Service from '../components/service.vue'
-import MyHome from '../components/myhome.vue'
-import Order from '../components/order.vue'
+import ItemTeen from '../views/item-teen.vue'
+import ItemToday from '../views/item-today.vue'
+import Service from '../views/service.vue'
+import MyHome from '../views/myhome.vue'
+import Order from '../views/order.vue'
 
 Vue.use(VueRouter)
 

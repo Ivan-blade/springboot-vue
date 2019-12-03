@@ -30,7 +30,7 @@
 // import ItemList from './item-list'
 // import Scroll from './scroll'
 import axios from 'axios'
-import mHeader from './mHeader'
+import mHeader from '../components/mHeader'
 export default {
   name: 'order',
   components: {

@@ -39,7 +39,7 @@ export default {
     return {
       username: '',
       password: '',
-      isRegist: false,
+      isRegist: true,
       res: null
     }
   },
