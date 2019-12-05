@@ -25,3 +25,9 @@
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     ```
 + 将application.yml中的数据库用户名与密码与本机的数据库匹配
+
++ 使用mock服务
+    ```
+        cd mockServer
+        node server.js
+    ```

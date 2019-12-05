@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import mHeader from './mHeader'
+import mHeader from '../components/mHeader'
 export default {
   name: 'item-page',
   components: {

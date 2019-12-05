@@ -9,17 +9,17 @@
         </v-header>
         <ul class="page-index">
             <span>
-                <li>全部</li>
-                <li>待确认</li>
-                <li>运输中</li>
-                <li>待评价</li>
+                <li @click="goToAll">全部</li>
+                <li @click="goToUn">待确认</li>
+                <li @click="goToTra">运输中</li>
+                <li @click="goToFin">待评价</li>
                 <li>取消/退款</li>
             </span>
         </ul>
-        <!-- <v-scroll>
-            <item-list></item-list>
-        </v-scroll> -->
-        <div class="page-content">
+        <v-scroll class="scroll-class">
+            <item-list :data="OrderInfo"></item-list>
+        </v-scroll>
+        <div class="page-content" v-show="!this.OrderInfo">
             <i class="iconfont icon-zanwudingdan"></i>
             <p>暂无相关订单</p>
         </div>
@@ -27,16 +27,16 @@
 </template>
 
 <script>
-// import ItemList from './item-list'
-// import Scroll from './scroll'
+import ItemList from '../components/item-list'
+import Scroll from '../components/scroll'
 import axios from 'axios'
 import mHeader from '../components/mHeader'
 export default {
   name: 'order',
   components: {
-    'v-header': mHeader
-    // 'v-scroll': Scroll,
-    // 'item-list': ItemList
+    'v-header': mHeader,
+    'v-scroll': Scroll,
+    'item-list': ItemList
   },
   data () {
     return {
@@ -44,14 +44,45 @@ export default {
     }
   },
   methods: {
-    async getOrderInfo () {
+    async getOrderInfo_driver () {
       const { data } = await axios.get('/bpi/item')
-      console.log(data)
-      this.OrderInfo = data
+      this.OrderInfo = data.filter((item) => {
+        return item.DriverName === 'driver_one'
+      })
+    },
+    async getOrderInfo_un () {
+      const { data } = await axios.get('/bpi/item')
+      this.OrderInfo = data.filter((item) => {
+        return item.DriverName === 'driver_one' && item.OrderStatus === '1'
+      })
+    },
+    async getOrderInfo_tra () {
+      const { data } = await axios.get('/bpi/item')
+      this.OrderInfo = data.filter((item) => {
+        return item.DriverName === 'driver_one' && item.OrderStatus === '2'
+      })
+    },
+    async getOrderInfo_fin () {
+      const { data } = await axios.get('/bpi/item')
+      this.OrderInfo = data.filter((item) => {
+        return item.DriverName === 'driver_one' && item.OrderStatus === '3'
+      })
+    },
+    goToAll () {
+      this.getOrderInfo_driver()
+    },
+    goToUn () {
+      this.getOrderInfo_un()
+    },
+    goToFin () {
+      this.getOrderInfo_fin()
+    },
+    goToTra () {
+      this.getOrderInfo_tra()
     }
   },
   mounted () {
-    this.getOrderInfo()
+    this.getOrderInfo_driver()
   }
 }
 </script>
@@ -122,5 +153,13 @@ export default {
         font-size: 25px;
         letter-spacing: 3px;
     }
+}
+.scroll-class{
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 185px;
+  height: calc(100vh - 270px);
+  overflow: hidden;
 }
 </style>

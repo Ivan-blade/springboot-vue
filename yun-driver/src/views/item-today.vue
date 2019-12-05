@@ -84,7 +84,7 @@ export default {
     },
     async getOrderInfo () {
       const { data } = await axios.get('/bpi/item')
-      console.log(data)
+      // console.log(data)
       this.OrderInfo = data
     }
   },
