@@ -9,7 +9,7 @@
                     <img src="../assets/images/first.jpg" alt="" @click="goToLogin">
                 </div>
                 <div class="homeInfo">
-                    <p class="fs">188****3273<span class="fb">未认证</span></p>
+                    <p class="fs">{{userName}}--{{userId}}<span class="fb">未认证</span></p>
                     <p class="fc">认证后享受更多服务</p>
                 </div>
             </div>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'myhome',
   methods: {
@@ -61,6 +62,12 @@ export default {
         name: 'home'
       })
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userName',
+      'userId'
+    ])
   }
 }
 </script>

@@ -23,13 +23,11 @@
           </li>
         </ul>
     </div>
-    <!-- <div class="content-last" @click="order">
-        <p>发货</p>
-    </div> -->
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import axios from 'axios'
 export default {
   name: 'home',
@@ -39,12 +37,16 @@ export default {
     return {
       username: '',
       password: '',
-      isRegist: true,
+      isRegist: false,
       res: null,
       id: 5
     }
   },
   methods: {
+    ...mapMutations([
+      'SET_USERNAME',
+      'SET_USERID'
+    ]),
     async Regist () {
       const { data } = await axios({
         method: 'post',
@@ -65,33 +67,17 @@ export default {
           password: this.password
         }
       })
-      console.log(data.detail.id)
       if (!data.success) {
         this.res = '用户名或密码错误，请重新输入'
-        this.id = data.detail.id
       } else if (data.success) {
         this.isRegist = true
+        this.SET_USERNAME(this.username)
+        this.SET_USERID(data.detail.id)
         this.$router.push({
           name: 'myhome'
         })
       }
     }
-    // async order () {
-    //   console.log(this.id)
-    //   console.log(this.username)
-    //   const { data } = await axios({
-    //     method: 'post',
-    //     url: '/api/order/item',
-    //     params: {
-    //       id: 5,
-    //       ItemName: this.username,
-    //       CarSize: '小型',
-    //       Origin: '上海',
-    //       Destination: '杭州'
-    //     }
-    //   })
-    //   console.log(data)
-    // }
   }
 }
 </script>

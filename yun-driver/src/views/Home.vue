@@ -23,14 +23,15 @@
           </li>
         </ul>
     </div>
-    <!-- <div class="content-last" @click="driver">
-        <p>订单</p>
-    </div> -->
+    <div class="content-last" @click="driver">
+        <p>处理订单</p>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import { mapMutations } from 'vuex'
 export default {
   name: 'home',
   components: {
@@ -39,11 +40,15 @@ export default {
     return {
       username: '',
       password: '',
-      isRegist: true,
+      isRegist: false,
       res: null
     }
   },
   methods: {
+    ...mapMutations([
+      'SET_USERNAME',
+      'SET_USERID'
+    ]),
     async Regist () {
       const { data } = await axios({
         method: 'post',
@@ -64,29 +69,29 @@ export default {
           password: this.password
         }
       })
-      console.log(data.detail.id)
       if (!data.success) {
         this.res = '用户名或密码错误，请重新输入'
-        this.id = data.detail.id
       } else if (data.success) {
         this.isRegist = true
+        this.SET_USERNAME(this.username)
+        this.SET_USERID(data.detail.id)
         this.$router.push({
           name: 'myhome'
         })
       }
+    },
+    async driver () {
+      const { data } = await axios({
+        method: 'post',
+        url: '/cpi/order/driver',
+        params: {
+          id: 2,
+          DriverName: 'luna',
+          OrderStatus: 2
+        }
+      })
+      console.log(data)
     }
-    // async driver () {
-    //   const { data } = await axios({
-    //     method: 'post',
-    //     url: '/api/order/driver',
-    //     params: {
-    //       id: 4,
-    //       DriverName: 'saber',
-    //       OrderStatus: 2
-    //     }
-    //   })
-    //   console.log(data)
-    // }
   }
 }
 </script>
@@ -165,7 +170,7 @@ export default {
         position: fixed;
         left: 0;
         right: 0;
-        bottom: 200px;
+        bottom: 150px;
         width: 25%;
         margin: 0 auto;
         padding: 20px 20px;

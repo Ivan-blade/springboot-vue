@@ -14,7 +14,7 @@
             <div class="content-first">
                 <p>您周围有<span>百万</span>司机等着您发货</p>
             </div>
-            <div class="content-last">
+            <div @click="item" class="content-last">
                 <p>发货</p>
             </div>
         </div>
@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import axios from 'axios'
 import mHeader from '../components/mHeader'
 export default {
   name: 'item-page',
@@ -65,7 +67,26 @@ export default {
       isRotate3: false
     }
   },
+  computed: {
+    ...mapGetters([
+      'userName',
+      'userId'
+    ])
+  },
   methods: {
+    async item () {
+      axios({
+        method: 'post',
+        url: '/api/order/item',
+        params: {
+          ItemName: this.userName,
+          CarSize: 'small',
+          Origin: 'njupt',
+          Destination: 'hangzhou'
+        }
+      })
+      console.log('ing')
+    },
     decision1 () {
       this.isRotate1 = !this.isRotate1
     },

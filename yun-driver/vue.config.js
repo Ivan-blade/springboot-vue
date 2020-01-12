@@ -14,6 +14,13 @@ module.exports = {
                 pathRewrite: {
                     '/bpi': '/'
                 }
+            },
+            'cpi': {
+                target: 'http://localhost:9090',
+                changeOrigin:false,
+                pathRewrite: {
+                    '/cpi': '/'
+                }
             }
         }
     }
