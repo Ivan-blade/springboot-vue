@@ -29,7 +29,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    @Insert("insert into user values(#{id},#{username},#{password})")
+    @Insert("insert into `user`(username,password) values(#{username},#{password})")
     //加入该注解可以保存对象后，查看对象插入id
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void regist(User user);
@@ -41,4 +41,13 @@ public interface UserMapper {
      */
     @Select("select u.id from user u where u.username = #{username} and password = #{password}")
     Long login(User user);
+
+    /**
+     * 验证
+     * @param user
+     * @return
+     */
+    @Update("update `user` set UserPhone=#{UserPhone} where id=#{id}")
+    void changenum(User user);
+
 }

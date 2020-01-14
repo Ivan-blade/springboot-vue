@@ -16,7 +16,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Update("update `order` set DriverName=#{DriverName},OrderStatus=#{OrderStatus} where id=#{id}")
+    @Update("update `order` set DriverName=#{DriverName},DriverPhone=#{DriverPhone},OrderStatus=#{OrderStatus} where id=#{id}")
     void driver(Order order);
 
     /**
@@ -24,7 +24,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination) values (#{ItemName},#{CarSize},#{Origin},#{Destination})")
+    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination,SenderName,SenderPhone) values (#{ItemName},#{CarSize},#{Origin},#{Destination},#{SenderName},#{SenderPhone})")
     //加入该注解可以保存对象后，查看对象插入id
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void item(Order order);

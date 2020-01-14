@@ -6,6 +6,10 @@ const mutations = {
   SET_USERID (state, val) {
     state.userid = val
     localStorage.setItem('UserId', JSON.stringify(state.userid))
+  },
+  SET_USERPHONE (state, val) {
+    state.userphone = val
+    localStorage.setItem('UserPhone', JSON.stringify(state.userphone))
   }
 }
 export default mutations

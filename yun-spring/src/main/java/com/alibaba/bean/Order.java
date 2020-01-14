@@ -11,6 +11,9 @@ public class Order {
     private int OrderStatus;
     private String Origin;
     private String Destination;
+    private Long SenderPhone;
+    private Long DriverPhone;
+    private String SenderName;
 
     
     public Long getId() {
@@ -21,6 +24,30 @@ public class Order {
         this.id = id;
     }
 
+    public Long getSenderPhone() {
+        return SenderPhone;
+    }
+
+    public void setSenderPhone(Long SenderPhone) {
+        this.SenderPhone = SenderPhone;
+    }
+
+    public Long getDriverPhone() {
+        return DriverPhone;
+    }
+
+    public void setDriverPhone(Long DriverPhone) {
+        this.DriverPhone = DriverPhone;
+    }
+
+    public String getSenderName() {
+        return SenderName;
+    }
+
+    public void setSenderName(String SenderName) {
+        this.SenderName = SenderName;
+    }
+
     public String getItemName() {
         return ItemName;
     }
@@ -28,6 +55,7 @@ public class Order {
     public void setItemName(String ItemName) {
         this.ItemName = ItemName;
     }
+
     public String getDriverName() {
         return DriverName;
     }

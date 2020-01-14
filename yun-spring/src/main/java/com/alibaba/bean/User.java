@@ -7,7 +7,16 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private Long UserPhone;
     
+    public Long getUserphone() {
+        return UserPhone;
+    }
+
+    public void setUserphone(Long UserPhone) {
+        this.UserPhone = UserPhone;
+    }
+
     public Long getId() {
         return id;
     }

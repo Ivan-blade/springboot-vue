@@ -4,6 +4,9 @@ const getters = {
   },
   userId (state) {
     return state.userid
+  },
+  userPhone (state) {
+    return state.userphone
   }
 }
 export default getters

@@ -66,4 +66,24 @@ public class UserService {
         }
         return result;
     }
+    /**
+     * 增加手机号
+     * @param user 
+     * @return ResultUser
+     */
+    public ResultUser changenum(User user) {
+        ResultUser result = new ResultUser();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            userMapper.changenum(user);
+            result.setMsg("验证成功");
+            result.setSuccess(true);
+            result.setDetail(user);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

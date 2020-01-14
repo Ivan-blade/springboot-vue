@@ -45,7 +45,6 @@ public class OrderService {
         result.setDetail(null);
         try {
             orderMapper.driver(order);
-            //System.out.println(order.getId());
             result.setMsg("订单完成成功");
             result.setSuccess(true);
             result.setDetail(order);

@@ -38,8 +38,7 @@ export default {
       username: '',
       password: '',
       isRegist: false,
-      res: null,
-      id: 5
+      res: null
     }
   },
   methods: {

@@ -36,5 +36,14 @@ public class UserController {
     public ResultUser login(User user){
         return userService.login(user);
     }
+    /**
+     * 验证
+     * @param user 参数封装
+     * @return ResultUser
+     */
+    @PostMapping(value = "/authority")
+    public ResultUser changenum(User user){
+        return userService.changenum(user);
+    }
 }
 

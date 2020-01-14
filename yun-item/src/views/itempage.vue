@@ -4,9 +4,9 @@
             <div>
                 <ul class="pageInfo">
                     <li class="pageInfo-first">消息</li>
-                    <li class="info-deal" @click="changeIntoFirst">在发货中</li>
-                    <li class="info-deal" @click="changeIntoSecond">发货历史</li>
-                    <li class="info-deal" @click="changeIntoThird">常发货源</li>
+                    <li class="info-deal" @click="changeIndex(1)">在发货中</li>
+                    <li class="info-deal" @click="changeIndex(2)">发货历史</li>
+                    <li class="info-deal" @click="changeIndex(3)">常发货源</li>
                 </ul>
             </div>
         </v-header>
@@ -14,7 +14,7 @@
             <div class="content-first">
                 <p>您周围有<span>百万</span>司机等着您发货</p>
             </div>
-            <div @click="item" class="content-last">
+            <div @click="changeIndex(4)" class="content-last">
                 <p>发货</p>
             </div>
         </div>
@@ -47,6 +47,22 @@
             <li><i class="iconfont icon-box"></i></li>
             <p>您尚未保存任何常发货源</p>
         </div>
+        <div class="page-content-fourth" v-if="pageIndex === 4">
+            <div class="input-display">
+                <input type="text" v-model="ItemName" placeholder="货物名称" />
+                <input type="text" v-model="CarSize" placeholder="货车规格" />
+                <input type="text" v-model="Origin" placeholder="起点" />
+                <input type="text" v-model="Destination" placeholder="终点" />
+            </div>
+            <ul class="result">
+                <li>
+                    <p>{{res}}</p>
+                </li>
+            </ul>
+            <ul @click="item" class="order_init">
+                <li>创建订单</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -64,28 +80,44 @@ export default {
       pageIndex: 1,
       isRotate1: false,
       isRotate2: false,
-      isRotate3: false
+      isRotate3: false,
+      ItemName: '',
+      CarSize: '',
+      Origin: '',
+      Destination: '',
+      res: ''
     }
   },
   computed: {
     ...mapGetters([
       'userName',
-      'userId'
+      'userId',
+      'userPhone'
     ])
   },
   methods: {
     async item () {
-      axios({
-        method: 'post',
-        url: '/api/order/item',
-        params: {
-          ItemName: this.userName,
-          CarSize: 'small',
-          Origin: 'njupt',
-          Destination: 'hangzhou'
-        }
-      })
-      console.log('ing')
+      if (this.ItemName && this.Origin && this.Destination && this.CarSize) {
+        // console.log(this.userId)
+        console.log(this.userPhone)
+        const { data } = await axios({
+          method: 'post',
+          url: '/api/order/item',
+          params: {
+            ItemName: this.ItemName,
+            senderName: this.userName,
+            // senderPhone: this.userId,
+            senderPhone: this.userPhone,
+            CarSize: this.CarSize,
+            Origin: this.Origin,
+            Destination: this.Destination
+          }
+        })
+        console.log(data)
+        this.res = '订单生成成功'
+      } else {
+        this.res = '请按提示输入货物信息'
+      }
     },
     decision1 () {
       this.isRotate1 = !this.isRotate1
@@ -96,14 +128,8 @@ export default {
     decision3 () {
       this.isRotate3 = !this.isRotate3
     },
-    changeIntoFirst () {
-      this.pageIndex = 1
-    },
-    changeIntoSecond () {
-      this.pageIndex = 2
-    },
-    changeIntoThird () {
-      this.pageIndex = 3
+    changeIndex (num) {
+      this.pageIndex = num
     }
   }
 }
@@ -250,6 +276,57 @@ export default {
         color: grey;
         font-size: 30px;
         letter-spacing: 3px;
+    }
+}
+.page-content-fourth{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 130px;
+    .input-display{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .order_init{
+        width: 300px;
+        margin-bottom: 40px;
+        font-size: 32px;
+        padding: 25px 65px;
+        letter-spacing: 6px;
+        background-color: #ee4e14;
+        color: white;
+        margin:30px auto;
+        text-align: center;
+    }
+    input{
+        margin: 20px 0;
+        outline-style: none ;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 13px 14px;
+        width: 400px;
+        height: 50px;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Microsoft soft";
+      }
+    input:focus{
+        border-color: #e78e1a;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255,97,0,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(255,97,0,.6)
+    }
+    .result{
+      // margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      p{
+        font-family: "Microsoft soft";
+        font-size: 24px;
+        color: #ccc;
+      }
     }
 }
 </style>

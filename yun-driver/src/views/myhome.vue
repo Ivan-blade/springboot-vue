@@ -9,7 +9,7 @@
                     <img src="../assets/images/first.jpg" alt="" @click="goToLogin">
                 </div>
                 <div class="homeInfo">
-                    <p class="fs">{{userName}}--{{userId}}<span class="fb">未认证</span></p>
+                    <p>{{userName}}--{{userId}}<span class="fb" @click="authority">未认证</span></p>
                     <p class="fc">认证后享受更多服务</p>
                 </div>
             </div>
@@ -48,25 +48,48 @@
                     <p>法律公告</p>
                 </li>
             </ul>
+            <input type="text" v-model="userphone" placeholder="手机号" />
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import axios from 'axios'
 export default {
   name: 'myhome',
+  data () {
+    return {
+      userphone: ''
+    }
+  },
   methods: {
     goToLogin () {
       this.$router.push({
         name: 'home'
       })
+    },
+    ...mapMutations ([
+      'SET_USERPHONE',
+    ]),
+    async authority () {
+      const { data } = await axios({
+        method: 'post',
+        url: '/api/user/authority',
+        params: {
+          id: this.userId,
+          userphone: this.userphone
+        }
+      })
+      console.log(data)
+      this.SET_USERPHONE(this.userphone)
     }
   },
   computed: {
     ...mapGetters([
       'userName',
-      'userId'
+      'userId',
+      'userPhone'
     ])
   }
 }
