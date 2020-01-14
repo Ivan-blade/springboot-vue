@@ -1,9 +1,10 @@
 package com.alibaba.mapper;
 
 import com.alibaba.bean.Order;
+import com.alibaba.bean.ResultOrder;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-
+import java.util.List;
 /**
  * mapper的具体表达式
  */
@@ -29,5 +30,10 @@ public interface OrderMapper {
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void item(Order order);
 
+    /**
+     * 显示订单
+     */
+    @Select("select * from `order` where OrderStatus=1")
+    List<Order> getOrderOne();
     
 }

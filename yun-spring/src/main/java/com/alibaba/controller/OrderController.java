@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -36,6 +37,15 @@ public class OrderController {
     public ResultOrder driver(Order order){
         return orderService.driver(order);
     }
+
+    /**
+     * 订单显示
+     */
+    @PostMapping(value = "/order_one")
+    public List<Order> getOrderOne(){
+        return orderService.getOrderOne();
+    }
+
 
 }
 

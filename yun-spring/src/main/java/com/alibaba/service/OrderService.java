@@ -6,6 +6,7 @@ import com.alibaba.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
@@ -24,7 +25,6 @@ public class OrderService {
         result.setDetail(null);
         try {
             orderMapper.item(order);
-            //System.out.println(order.getId());
             result.setMsg("订单生成成功");
             result.setSuccess(true);
             result.setDetail(order);
@@ -53,5 +53,12 @@ public class OrderService {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * 显示订单
+     */
+    public List<Order> getOrderOne() {
+        return orderMapper.getOrderOne();
     }
 }

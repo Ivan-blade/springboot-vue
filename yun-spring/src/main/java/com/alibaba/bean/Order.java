@@ -15,7 +15,23 @@ public class Order {
     private Long DriverPhone;
     private String SenderName;
 
-    
+    public Order() {
+
+    }
+
+    public Order(Long id, String ItemName, String DriverName, String CarSize, int OrderStatus, String Origin, String Destination, Long SenderPhone, Long DriverPhone, String SenderName){
+        this.id = id;
+        this.ItemName = ItemName;
+        this.DriverName = DriverName;
+        this.CarSize = CarSize;
+        this.OrderStatus = OrderStatus;
+        this.Origin = Origin;
+        this.Destination = Destination;
+        this.SenderName = SenderName;
+        this.SenderPhone = SenderPhone;
+        this.DriverPhone = DriverPhone;
+    }
+
     public Long getId() {
         return id;
     }

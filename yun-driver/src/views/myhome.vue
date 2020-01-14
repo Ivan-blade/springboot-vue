@@ -69,8 +69,8 @@ export default {
         name: 'home'
       })
     },
-    ...mapMutations ([
-      'SET_USERPHONE',
+    ...mapMutations([
+      'SET_USERPHONE'
     ]),
     async authority () {
       const { data } = await axios({

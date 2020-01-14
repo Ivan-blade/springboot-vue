@@ -8,9 +8,9 @@
                 </div>
                 <div class="item-info">
                     <ul class="item-ul">
-                        <li>{{item.Origin}} -> {{item.Destination}}</li>
-                        <li>{{item.CarSize}}</li>
-                        <li>会员{{item.ItemName}}</li>
+                        <li>{{item.origin}} -> {{item.destination}}</li>
+                        <li>{{item.carSize}}</li>
+                        <li>会员:{{item.itemName}}</li>
                         <li class="comment">交易9999 好评率99%</li>
                     </ul>
                 </div>

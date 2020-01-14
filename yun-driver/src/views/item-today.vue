@@ -83,8 +83,8 @@ export default {
       this.pageIndex = 2
     },
     async getOrderInfo () {
-      const { data } = await axios.get('/bpi/item')
-      // console.log(data)
+      const { data } = await axios.post('/api/order/order_one')
+      console.log(data)
       this.OrderInfo = data
     }
   },
