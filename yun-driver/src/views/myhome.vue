@@ -159,12 +159,11 @@ export default {
     .home-list{
         display: flex;
         flex-direction: row;
-        align-items: center;
         padding-bottom: 30px;
+        text-align: center;
         li{
             margin: 15px 0;
             width: 25%;
-            text-align: center;
             div{
                 margin-top: 25px;
                 margin-bottom: 20px;
@@ -180,7 +179,7 @@ export default {
     }
     .top-list{
         padding-left: 20px;
-        font-size: 25px;
+        font-size: 28px;
         letter-spacing: 2px;
         font-family: "Microsoft soft";
     }

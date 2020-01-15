@@ -171,11 +171,11 @@ export default {
     .home-list{
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        text-align: center;
         padding-bottom: 30px;
         li{
-            text-align: center;
+            margin: 15px 0;
+            width: 25%;
             div{
                 margin-top: 25px;
                 margin-bottom: 20px;
@@ -196,8 +196,9 @@ export default {
         }
     }
     .top-list{
+        margin-top: 20px;
         padding-left: 20px;
-        font-size: 32px;
+        font-size: 28px;
     }
 }
 </style>

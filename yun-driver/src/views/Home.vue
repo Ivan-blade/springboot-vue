@@ -86,18 +86,23 @@ export default {
 <style lang="less" scoped>
 .page{
   z-index: 999;
+  // 该页优先级极高
   .content{
     width: 100%;
     position: fixed;
     top: 300px;
     left: 0;
     right: 0;
-    height: 100px;
+    // height: 100px;
+    // border: 1px solid red;
     .input-class{
+      margin: 0 auto;
+      // border: 1px solid red;
       display: flex;
       flex-direction: column;
+      // 纵向排列
       text-align: center;
-      position: relative;
+      // 居中排列
       li{
         margin: 20px 0;
       }
@@ -120,29 +125,29 @@ export default {
       }
     }
     .button-class{
-      position: absolute;
-      top: 280px;
-      left: 55px;
-      text-align: center;
+      width: 100%;
+      margin-top: 40px;
       display: flex;
       flex-direction: row;
       justify-content: center;
+      // center:居中紧密排列，注意宽度
+      // flex-start:左对齐紧密排列
+      // flex-end:右对齐紧密排列
+      // space-between:居中散布排列，两边不留白
+      // space-around:居中散布排列，两边留白
       li{
-        margin: 0px 104px;
+        margin: 0px 100px;
+        // 按钮之间距离
       }
       button{
         background-color: #ff4500; /* Green */
         border: none;
         color: white;
         padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
         font-size: 24px;
       }
     }
     .result{
-      // margin-top: 20px;
       display: flex;
       flex-direction: row;
       justify-content: center;

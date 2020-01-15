@@ -93,12 +93,10 @@ export default {
     top: 300px;
     left: 0;
     right: 0;
-    height: 100px;
     .input-class{
       display: flex;
       flex-direction: column;
       text-align: center;
-      position: relative;
       li{
         margin: 20px 0;
       }
@@ -121,24 +119,19 @@ export default {
       }
     }
     .button-class{
-      position: absolute;
-      top: 280px;
-      left: 55px;
-      text-align: center;
+      margin-top: 40px;
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: center;
       li{
-        margin: 0px 104px;
+        margin: 0px 100px;
       }
       button{
         background-color: #ff4500; /* Green */
         border: none;
         color: white;
         padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
         font-size: 24px;
       }
     }

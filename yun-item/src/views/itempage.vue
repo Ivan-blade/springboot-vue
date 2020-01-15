@@ -140,11 +140,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     margin-top: 15px;
     line-height: 54px;
     font-size: 26px;
     .info-deal{
+        width: 17%;
         padding: 3px 8px;
         border: 1px solid white;
         &:hover{
