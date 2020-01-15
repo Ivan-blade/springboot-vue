@@ -3,7 +3,6 @@ package com.alibaba.mapper;
 import com.alibaba.bean.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
-
 /**
  * mapper的具体表达式
  */
@@ -39,11 +38,11 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    @Select("select u.id from user u where u.username = #{username} and password = #{password}")
-    Long login(User user);
+    @Select("select u.* from user u where u.username = #{username} and password = #{password}")
+    User login(User user);
 
     /**
-     * 验证
+     * 手机验证
      * @param user
      * @return
      */

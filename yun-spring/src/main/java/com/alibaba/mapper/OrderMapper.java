@@ -31,9 +31,15 @@ public interface OrderMapper {
     void item(Order order);
 
     /**
-     * 显示订单
+     * 显示公共订单
      */
     @Select("select * from `order` where OrderStatus=1")
     List<Order> getOrderOne();
+
+    /**
+     * 显示个体订单
+     */
+    @Select("select * from `order` where DriverPhone=#{DriverPhone} and OrderStatus=#{OrderStatus}")
+    List<Order> getOrderDeal(Order order);
     
 }

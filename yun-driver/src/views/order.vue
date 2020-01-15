@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ItemList from '../components/item-list'
 import Scroll from '../components/scroll'
 import axios from 'axios'
@@ -38,6 +39,12 @@ export default {
     'v-scroll': Scroll,
     'item-list': ItemList
   },
+  computed: {
+    ...mapGetters([
+      'userPhone',
+      'userId'
+    ])
+  },
   data () {
     return {
       OrderInfo: []
@@ -45,28 +52,54 @@ export default {
   },
   methods: {
     async getOrderInfo_driver () {
-      const { data } = await axios.get('/bpi/item')
-      this.OrderInfo = data.filter((item) => {
-        return item.DriverName === 'driver_one'
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/2`,
+        params: {
+          driverPhone: this.userPhone,
+          orderStatus: 2
+        }
       })
+      this.OrderInfo = data
+      // console.log(data)
+      // console.log(this.userId)
+      // console.log(this.userPhone)
     },
     async getOrderInfo_un () {
-      const { data } = await axios.get('/bpi/item')
-      this.OrderInfo = data.filter((item) => {
-        return item.DriverName === 'driver_one' && item.OrderStatus === '1'
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/3`,
+        params: {
+          driverPhone: this.userPhone,
+          orderStatus: 3
+        }
       })
+      this.OrderInfo = data
+      // console.log(data)
     },
     async getOrderInfo_tra () {
-      const { data } = await axios.get('/bpi/item')
-      this.OrderInfo = data.filter((item) => {
-        return item.DriverName === 'driver_one' && item.OrderStatus === '2'
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/4`,
+        params: {
+          driverPhone: this.userPhone,
+          orderStatus: 4
+        }
       })
+      this.OrderInfo = data
+      // console.log(data)
     },
     async getOrderInfo_fin () {
-      const { data } = await axios.get('/bpi/item')
-      this.OrderInfo = data.filter((item) => {
-        return item.DriverName === 'driver_one' && item.OrderStatus === '3'
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/5`,
+        params: {
+          driverPhone: this.userPhone,
+          orderStatus: 5
+        }
       })
+      this.OrderInfo = data
+      // console.log(data)
     },
     goToAll () {
       this.getOrderInfo_driver()

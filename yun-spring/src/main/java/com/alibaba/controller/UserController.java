@@ -6,9 +6,11 @@ import com.alibaba.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/user")
@@ -36,6 +38,7 @@ public class UserController {
     public ResultUser login(User user){
         return userService.login(user);
     }
+
     /**
      * 验证
      * @param user 参数封装

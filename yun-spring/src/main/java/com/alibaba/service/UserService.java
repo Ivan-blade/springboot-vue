@@ -6,6 +6,7 @@ import com.alibaba.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
@@ -51,14 +52,13 @@ public class UserService {
         result.setSuccess(false);
         result.setDetail(null);
         try {
-            Long userId= userMapper.login(user);
-            if(userId == null){
+            User info = userMapper.login(user);
+            if(info == null){
                 result.setMsg("用户名或密码错误");
             }else{
                 result.setMsg("登录成功");
                 result.setSuccess(true);
-                user.setId(userId);
-                result.setDetail(user);
+                result.setDetail(info);
             }
         } catch (Exception e) {
             result.setMsg(e.getMessage());
@@ -66,6 +66,8 @@ public class UserService {
         }
         return result;
     }
+
+
     /**
      * 增加手机号
      * @param user 

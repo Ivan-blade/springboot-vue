@@ -23,9 +23,6 @@
           </li>
         </ul>
     </div>
-    <div class="content-last" @click="driver">
-        <p>处理订单</p>
-    </div>
   </div>
 </template>
 
@@ -79,18 +76,6 @@ export default {
           name: 'myhome'
         })
       }
-    },
-    async driver () {
-      const { data } = await axios({
-        method: 'post',
-        url: '/cpi/order/driver',
-        params: {
-          id: 2,
-          DriverName: 'luna',
-          OrderStatus: 2
-        }
-      })
-      console.log(data)
     }
   }
 }
@@ -166,21 +151,5 @@ export default {
       }
     }
   }
-  .content-last{
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 150px;
-        width: 25%;
-        margin: 0 auto;
-        padding: 20px 20px;
-        background-color: #ee4e14;
-        color: white;
-        p{
-          letter-spacing: 6px;
-          font-size: 32px;
-          padding-left: 55px;
-        }
-    }
 }
 </style>

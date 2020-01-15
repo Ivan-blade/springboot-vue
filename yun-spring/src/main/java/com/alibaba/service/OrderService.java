@@ -56,9 +56,16 @@ public class OrderService {
     }
 
     /**
-     * 显示订单
+     * 显示公共订单
      */
     public List<Order> getOrderOne() {
         return orderMapper.getOrderOne();
+    }
+
+    /**
+     * 显示个体订单
+     */
+    public List<Order> getOrderDeal(Order order) {
+        return orderMapper.getOrderDeal(order);
     }
 }

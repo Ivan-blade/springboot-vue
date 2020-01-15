@@ -17,7 +17,7 @@
               </div>
               <div class="random-two">
                   <p>9分钟前</p>
-                  <i class="iconfont icon-kaipiao"></i>
+                  <i class="iconfont icon-kaipiao" @click="StatusChange(item.id)"></i>
               </div>
             </li>
         </ul>
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { mapGetters } from 'vuex'
 export default {
   name: 'item-list',
   props: {
@@ -34,6 +36,31 @@ export default {
         return []
       }
     }
+  },
+  methods: {
+    async StatusChange (temp) {
+      const { data } = await axios({
+        method: 'post',
+        url: '/api/order/driver',
+        params: {
+          id: temp,
+          driverPhone: this.userPhone,
+          orderStatus: 2,
+          driverName: this.userName
+        }
+      })
+      this.OrderInfo = data
+      console.log(data)
+      // console.log(this.userId)
+      // console.log(this.userPhone)
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'userPhone',
+      'userName',
+      'userId'
+    ])
   }
 }
 </script>

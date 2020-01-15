@@ -8,7 +8,7 @@ const mutations = {
     localStorage.setItem('UserId', JSON.stringify(state.userid))
   },
   SET_USERPHONE (state, val) {
-    state.userid = val
+    state.userphone = val
     localStorage.setItem('UserPhone', JSON.stringify(state.userphone))
   }
 }

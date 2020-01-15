@@ -39,13 +39,21 @@ public class OrderController {
     }
 
     /**
-     * 订单显示
+     * 公共订单显示
      */
     @PostMapping(value = "/order_one")
     public List<Order> getOrderOne(){
         return orderService.getOrderOne();
     }
 
-
+    /**
+     * 个体订单显示
+     * id用于区分用户，status用于区分订单状态
+     */
+    @PostMapping(value = "/{userId}/{status}")
+    public List<Order> getOrderDeal(Order order){
+        return orderService.getOrderDeal(order);
+    }
+    
 }
 
