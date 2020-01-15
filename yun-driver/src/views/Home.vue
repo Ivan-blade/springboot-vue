@@ -44,7 +44,8 @@ export default {
   methods: {
     ...mapMutations([
       'SET_USERNAME',
-      'SET_USERID'
+      'SET_USERID',
+      'SET_USERPHONE'
     ]),
     async Regist () {
       const { data } = await axios({
@@ -72,6 +73,7 @@ export default {
         this.isRegist = true
         this.SET_USERNAME(this.username)
         this.SET_USERID(data.detail.id)
+        this.SET_USERPHONE(data.detail.userphone)
         this.$router.push({
           name: 'myhome'
         })

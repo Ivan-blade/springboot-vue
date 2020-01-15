@@ -70,7 +70,7 @@ export default {
       if (!data.success) {
         this.res = '用户名或密码错误，请重新输入'
       } else if (data.success) {
-        console.log(data)
+        // console.log(data)
         this.isRegist = true
         this.SET_USERNAME(this.username)
         this.SET_USERID(data.detail.id)
