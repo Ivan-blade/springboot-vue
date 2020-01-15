@@ -1,6 +1,6 @@
 package com.alibaba.controller;
 
-import com.alibaba.bean.ResultUser;
+import com.alibaba.bean.Result;
 import com.alibaba.bean.User;
 import com.alibaba.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,30 +22,30 @@ public class UserController {
     /**
      * 注册
      * @param user 参数封装
-     * @return ResultUser
+     * @return Result
      */
     @PostMapping(value = "/regist")
-    public ResultUser regist(User user){
+    public Result regist(User user){
         return userService.regist(user);
     }
 
     /**
      * 登录
      * @param user 参数封装
-     * @return ResultUser
+     * @return Result
      */
     @PostMapping(value = "/login")
-    public ResultUser login(User user){
+    public Result login(User user){
         return userService.login(user);
     }
 
     /**
      * 验证
      * @param user 参数封装
-     * @return ResultUser
+     * @return Result
      */
     @PostMapping(value = "/authority")
-    public ResultUser changenum(User user){
+    public Result changenum(User user){
         return userService.changenum(user);
     }
 }

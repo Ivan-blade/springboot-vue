@@ -1,6 +1,6 @@
 package com.alibaba.controller;
 
-import com.alibaba.bean.ResultOrder;
+import com.alibaba.bean.Result;
 import com.alibaba.bean.Order;
 import com.alibaba.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class OrderController {
      * @return ResultOrder
      */
     @PostMapping(value = "/item")
-    public ResultOrder item(Order order){
+    public Result item(Order order){
         return orderService.item(order);
     }
 
@@ -34,7 +34,7 @@ public class OrderController {
      * @return ResultOrder
      */
     @PostMapping(value = "/driver")
-    public ResultOrder driver(Order order){
+    public Result driver(Order order){
         return orderService.driver(order);
     }
 

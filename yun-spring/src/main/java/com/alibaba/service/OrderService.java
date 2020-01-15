@@ -1,6 +1,6 @@
 package com.alibaba.service;
 
-import com.alibaba.bean.ResultOrder;
+import com.alibaba.bean.Result;
 import com.alibaba.bean.Order;
 import com.alibaba.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ public class OrderService {
     /**
      * 生成订单
      * @param order 参数封装
-     * @return ResultOrder
+     * @return Result
      */
-    public ResultOrder item(Order order) {
-        ResultOrder result = new ResultOrder();
+    public Result item(Order order) {
+        Result result = new Result();
         result.setSuccess(false);
         result.setDetail(null);
         try {
@@ -37,10 +37,10 @@ public class OrderService {
     /**
      * 完成订单
      * @param order 参数封装
-     * @return ResultOrder
+     * @return Result
      */
-    public ResultOrder driver(Order order) {
-        ResultOrder result = new ResultOrder();
+    public Result driver(Order order) {
+        Result result = new Result();
         result.setSuccess(false);
         result.setDetail(null);
         try {

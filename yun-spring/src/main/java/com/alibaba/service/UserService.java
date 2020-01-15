@@ -1,6 +1,6 @@
 package com.alibaba.service;
 
-import com.alibaba.bean.ResultUser;
+import com.alibaba.bean.Result;
 import com.alibaba.bean.User;
 import com.alibaba.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ public class UserService {
     /**
      * 注册
      * @param user 参数封装
-     * @return ResultUser
+     * @return Result
      */
-    public ResultUser regist(User user) {
-        ResultUser result = new ResultUser();
+    public Result regist(User user) {
+        Result result = new Result();
         result.setSuccess(false);
         result.setDetail(null);
         try {
@@ -31,7 +31,6 @@ public class UserService {
 
             }else{
                 userMapper.regist(user);
-                //System.out.println(user.getId());
                 result.setMsg("注册成功");
                 result.setSuccess(true);
                 result.setDetail(user);
@@ -45,10 +44,10 @@ public class UserService {
     /**
      * 登录
      * @param user 用户名和密码
-     * @return ResultUser
+     * @return Result
      */
-    public ResultUser login(User user) {
-        ResultUser result = new ResultUser();
+    public Result login(User user) {
+        Result result = new Result();
         result.setSuccess(false);
         result.setDetail(null);
         try {
@@ -71,10 +70,10 @@ public class UserService {
     /**
      * 增加手机号
      * @param user 
-     * @return ResultUser
+     * @return Result
      */
-    public ResultUser changenum(User user) {
-        ResultUser result = new ResultUser();
+    public Result changenum(User user) {
+        Result result = new Result();
         result.setSuccess(false);
         result.setDetail(null);
         try {

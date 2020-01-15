@@ -104,13 +104,13 @@ export default {
           method: 'post',
           url: '/api/order/item',
           params: {
-            ItemName: this.ItemName,
+            itemName: this.ItemName,
             senderName: this.userName,
             // senderPhone: this.userId,
             senderPhone: this.userPhone,
-            CarSize: this.CarSize,
-            Origin: this.Origin,
-            Destination: this.Destination
+            carSize: this.CarSize,
+            origin: this.Origin,
+            destination: this.Destination
           }
         })
         console.log(data)

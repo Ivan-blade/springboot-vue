@@ -1,7 +1,7 @@
 package com.alibaba.mapper;
 
 import com.alibaba.bean.Order;
-import com.alibaba.bean.ResultOrder;
+import com.alibaba.bean.Result;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -17,7 +17,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Update("update `order` set DriverName=#{DriverName},DriverPhone=#{DriverPhone},OrderStatus=#{OrderStatus} where id=#{id}")
+    @Update("update `order` set DriverName=#{driverName},DriverPhone=#{driverPhone},OrderStatus=#{orderStatus} where id=#{id}")
     void driver(Order order);
 
     /**
@@ -25,7 +25,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination,SenderName,SenderPhone) values (#{ItemName},#{CarSize},#{Origin},#{Destination},#{SenderName},#{SenderPhone})")
+    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination,SenderName,SenderPhone) values (#{itemName},#{carSize},#{origin},#{destination},#{senderName},#{senderPhone})")
     //加入该注解可以保存对象后，查看对象插入id
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void item(Order order);
@@ -39,7 +39,7 @@ public interface OrderMapper {
     /**
      * 显示个体订单
      */
-    @Select("select * from `order` where DriverPhone=#{DriverPhone} and OrderStatus=#{OrderStatus}")
+    @Select("select * from `order` where DriverPhone=#{driverPhone} and OrderStatus=#{orderStatus}")
     List<Order> getOrderDeal(Order order);
     
 }

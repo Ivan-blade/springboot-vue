@@ -5,31 +5,31 @@ package com.alibaba.bean;
  */
 public class Order {
     private Long id;
-    private String ItemName;
-    private String DriverName;
-    private String CarSize;
-    private int OrderStatus;
-    private String Origin;
-    private String Destination;
-    private Long SenderPhone;
-    private Long DriverPhone;
-    private String SenderName;
+    private String itemName;
+    private String driverName;
+    private String carSize;
+    private int orderStatus;
+    private String origin;
+    private String destination;
+    private Long senderPhone;
+    private Long driverPhone;
+    private String senderName;
 
     public Order() {
 
     }
 
-    public Order(Long id, String ItemName, String DriverName, String CarSize, int OrderStatus, String Origin, String Destination, Long SenderPhone, Long DriverPhone, String SenderName){
+    public Order(Long id, String itemName, String driverName, String carSize, int orderStatus, String origin, String destination, Long senderPhone, Long driverPhone, String senderName){
         this.id = id;
-        this.ItemName = ItemName;
-        this.DriverName = DriverName;
-        this.CarSize = CarSize;
-        this.OrderStatus = OrderStatus;
-        this.Origin = Origin;
-        this.Destination = Destination;
-        this.SenderName = SenderName;
-        this.SenderPhone = SenderPhone;
-        this.DriverPhone = DriverPhone;
+        this.itemName = itemName;
+        this.driverName = driverName;
+        this.carSize = carSize;
+        this.orderStatus = orderStatus;
+        this.origin = origin;
+        this.destination = destination;
+        this.senderName = senderName;
+        this.senderPhone = senderPhone;
+        this.driverPhone = driverPhone;
     }
 
     public Long getId() {
@@ -41,70 +41,70 @@ public class Order {
     }
 
     public Long getSenderPhone() {
-        return SenderPhone;
+        return senderPhone;
     }
 
-    public void setSenderPhone(Long SenderPhone) {
-        this.SenderPhone = SenderPhone;
+    public void setSenderPhone(Long senderPhone) {
+        this.senderPhone = senderPhone;
     }
 
     public Long getDriverPhone() {
-        return DriverPhone;
+        return driverPhone;
     }
 
-    public void setDriverPhone(Long DriverPhone) {
-        this.DriverPhone = DriverPhone;
+    public void setDriverPhone(Long driverPhone) {
+        this.driverPhone = driverPhone;
     }
 
-    public String getSenderName() {
-        return SenderName;
+    public String getsenderName() {
+        return senderName;
     }
 
-    public void setSenderName(String SenderName) {
-        this.SenderName = SenderName;
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 
     public String getItemName() {
-        return ItemName;
+        return itemName;
     }
 
-    public void setItemName(String ItemName) {
-        this.ItemName = ItemName;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public String getDriverName() {
-        return DriverName;
+        return driverName;
     }
 
-    public void setDriverName(String DriverName) {
-        this.DriverName = DriverName;
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
     }
     public String getCarSize() {
-        return CarSize;
+        return carSize;
     }
 
-    public void setCarSize(String CarSize) {
-        this.CarSize = CarSize;
+    public void setCarSize(String carSize) {
+        this.carSize = carSize;
     }
     public int getOrderStatus() {
-        return OrderStatus;
+        return orderStatus;
     }
 
-    public void setOrderStatus(int OrderStatus) {
-        this.OrderStatus = OrderStatus;
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
     }
     public String getOrigin() {
-        return Origin;
+        return origin;
     }
 
-    public void setOrigin(String Origin) {
-        this.Origin = Origin;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
     public String getDestination() {
-        return Destination;
+        return destination;
     }
 
-    public void setDestination(String Destination) {
-        this.Destination = Destination;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 }
