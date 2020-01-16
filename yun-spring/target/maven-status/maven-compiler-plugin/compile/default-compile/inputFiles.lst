@@ -1,5 +1,4 @@
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\mapper\OrderMapper.java
-F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\bean\ResultOrder.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\controller\OrderController.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\service\UserService.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\Application.java
@@ -7,5 +6,5 @@ F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\bean\User.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\controller\UserController.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\mapper\UserMapper.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\bean\Order.java
+F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\bean\Result.java
 F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\service\OrderService.java
-F:\web_all\yunFollow\yun-spring\src\main\java\com\alibaba\bean\ResultUser.java

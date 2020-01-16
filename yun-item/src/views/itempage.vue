@@ -99,7 +99,7 @@ export default {
     async item () {
       if (this.ItemName && this.Origin && this.Destination && this.CarSize) {
         // console.log(this.userId)
-        console.log(this.userPhone)
+        // console.log(this.userPhone)
         const { data } = await axios({
           method: 'post',
           url: '/api/order/item',

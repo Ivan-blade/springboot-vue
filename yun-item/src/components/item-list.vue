@@ -17,7 +17,7 @@
               </div>
               <div class="random-two">
                   <p>9分钟前</p>
-                  <i class="iconfont icon-kaipiao" @click="StatusChange(item.id, backStatus)" v-show="backShow"></i>
+                  <i class="iconfont icon-kaipiao" @click="StatusChange(item.id,backStatus)" v-show="backClick"></i>
               </div>
             </li>
         </ul>
@@ -36,7 +36,7 @@ export default {
         return []
       }
     },
-    backShow: {
+    backClick: {
       type: Boolean,
       default () {
         return false
@@ -53,12 +53,12 @@ export default {
     async StatusChange (temp, status) {
       const { data } = await axios({
         method: 'post',
-        url: '/api/order/driver',
+        url: '/api/order/itemer',
         params: {
           id: temp,
-          driverPhone: this.userPhone,
+          senderPhone: this.userPhone,
           orderStatus: status,
-          driverName: this.userName
+          senderName: this.userName
         }
       })
       this.OrderInfo = data

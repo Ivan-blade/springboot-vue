@@ -29,7 +29,7 @@ public class OrderController {
     }
 
     /**
-     * 订单处理
+     * 司机修改订单状态
      * @param order 参数封装
      * @return ResultOrder
      */
@@ -39,10 +39,20 @@ public class OrderController {
     }
 
     /**
+     * 货主修改订单状态
+     * @param order 参数封装
+     * @return ResultOrder
+     */
+    @PostMapping(value = "/itemer")
+    public Result itemer(Order order){
+        return orderService.itemer(order);
+    }
+
+    /**
      * 公共订单显示
      */
     @PostMapping(value = "/order_one")
-    public List<Order> getOrderOne(){
+    public Result getOrderOne(){
         return orderService.getOrderOne();
     }
 
@@ -51,9 +61,26 @@ public class OrderController {
      * id用于区分用户，status用于区分订单状态
      */
     @PostMapping(value = "/{userId}/{status}")
-    public List<Order> getOrderDeal(Order order){
+    public Result getOrderDeal(Order order){
         return orderService.getOrderDeal(order);
     }
+
+    /**
+     * 货主端所有订单展示
+     * id用于区分用户
+     */
+    @PostMapping(value = "/itemer/{userId}")
+    public Result getItemOrderAll(Order order){
+        return orderService.getItemOrderAll(order);
+    }
     
+    /**
+     * 司机端所有订单展示
+     * id用于区分用户
+     */
+    @PostMapping(value = "/driver/{userId}")
+    public Result getDriverOrderAll(Order order){
+        return orderService.getDriverOrderAll(order);
+    }
 }
 

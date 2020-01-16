@@ -9,15 +9,18 @@
         </v-header>
         <ul class="page-index">
             <span>
-                <li>全部</li>
-                <li>待确认</li>
-                <li>运输中</li>
-                <li>待支付</li>
-                <li>待评价</li>
-                <li>取消/退款</li>
+                <li @click="dataAll">全部</li>
+                <li @click="dataConfirm">待确认</li>
+                <li @click="dataTransport">运输中</li>
+                <li @click="dataUnpay">待支付</li>
+                <li @click="dataUncomment">待评价</li>
+                <li @click="dataRefund">取消/退款</li>
             </span>
         </ul>
-        <div class="page-content">
+        <v-scroll class="scroll-class">
+            <item-list :data="OrderInfo" :backClick="backDecision" :backStatus="subStatus"></item-list>
+        </v-scroll>
+        <div class="page-content" v-show="!this.OrderInfo">
             <i class="iconfont icon-zanwudingdan"></i>
             <p>暂无相关订单</p>
         </div>
@@ -26,10 +29,129 @@
 
 <script>
 import mHeader from '../components/mHeader'
+import axios from 'axios'
+import { mapGetters } from 'vuex'
+import ItemList from '../components/item-list'
+import Scroll from '../components/scroll'
 export default {
   name: 'order',
   components: {
-    'v-header': mHeader
+    'v-header': mHeader,
+    'v-scroll': Scroll,
+    'item-list': ItemList
+  },
+  computed: {
+    ...mapGetters([
+      'userPhone',
+      'userId'
+    ])
+  },
+  data () {
+    return {
+      OrderInfo: [],
+      backDecision: false,
+      subStatus: 2
+    }
+  },
+  methods: {
+    async getdataAll () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/itemer/${this.userId}`,
+        params: {
+          senderPhone: this.userPhone
+        }
+      })
+      this.OrderInfo = data.detail
+      console.log(data)
+    },
+    async getdataConfirm () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/2`,
+        params: {
+          senderPhone: this.userPhone,
+          orderStatus: 2
+        }
+      })
+      this.OrderInfo = data.detail
+    //   console.log(data)
+    },
+    async getdataTransport () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/3`,
+        params: {
+          senderPhone: this.userPhone,
+          orderStatus: 3
+        }
+      })
+      this.OrderInfo = data.detail
+    //   console.log(data)
+    },
+    async getdataUnpay () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/4`,
+        params: {
+          senderPhone: this.userPhone,
+          orderStatus: 4
+        }
+      })
+      this.OrderInfo = data.detail
+      console.log(data)
+    },
+    async getdataUncomment () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/5`,
+        params: {
+          senderPhone: this.userPhone,
+          orderStatus: 5
+        }
+      })
+      this.OrderInfo = data.detail
+    //   console.log(data)
+    },
+    async getdataRefund () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/0`,
+        params: {
+          senderPhone: this.userPhone,
+          orderStatus: 0
+        }
+      })
+      this.OrderInfo = data.detail
+    //   console.log(data)
+    },
+    dataAll () {
+      this.getdataAll()
+    },
+    dataConfirm () {
+      this.subStatus = 3
+      this.backDecision = true
+      this.getdataConfirm()
+    },
+    dataTransport () {
+      this.backDecision = false
+      this.getdataTransport()
+    },
+    dataUnpay () {
+      this.subStatus = 5
+      this.backDecision = true
+      this.getdataUnpay()
+    },
+    dataUncomment () {
+      this.subStatus = 6
+      this.backDecision = true
+      this.getdataUncomment()
+    },
+    dataRefund () {
+      this.subStatus = 0
+      this.backDecision = true
+      this.getdataRefund()
+    }
   }
 }
 </script>
@@ -100,5 +222,13 @@ export default {
         font-size: 25px;
         letter-spacing: 3px;
     }
+}
+.scroll-class{
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 185px;
+  height: calc(100vh - 270px);
+  overflow: hidden;
 }
 </style>

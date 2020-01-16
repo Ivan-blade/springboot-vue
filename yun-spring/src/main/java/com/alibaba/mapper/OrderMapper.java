@@ -13,12 +13,20 @@ import java.util.List;
 public interface OrderMapper {
 
     /**
-     * 接收订单
+     * 司机更改订单状态
      * @param order
      * @return
      */
     @Update("update `order` set DriverName=#{driverName},DriverPhone=#{driverPhone},OrderStatus=#{orderStatus} where id=#{id}")
     void driver(Order order);
+
+    /**
+     * 货主更改订单状态
+     * @param order
+     * @return
+     */
+    @Update("update `order` set SenderName=#{senderName},SenderPhone=#{senderPhone},OrderStatus=#{orderStatus} where id=#{id}")
+    void itemer(Order order);
 
     /**
      * 生成订单 插入一条order记录
@@ -39,7 +47,18 @@ public interface OrderMapper {
     /**
      * 显示个体订单
      */
-    @Select("select * from `order` where DriverPhone=#{driverPhone} and OrderStatus=#{orderStatus}")
+    @Select("select * from `order` where (DriverPhone=#{driverPhone} or SenderPhone=#{senderPhone}) and OrderStatus=#{orderStatus}")
     List<Order> getOrderDeal(Order order);
     
+    /**
+     * 显示货主所有订单
+     */
+    @Select("select * from `order` where SenderPhone=#{senderPhone}")
+    List<Order> getItemOrderAll(Order order);
+
+    /**
+     * 显示司机所有订单
+     */
+    @Select("select * from `order` where DriverPhone=#{driverPhone}")
+    List<Order> getDriverOrderAll(Order order);
 }

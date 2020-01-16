@@ -34,8 +34,9 @@ public class OrderService {
         }
         return result;
     }
+
     /**
-     * 完成订单
+     * 司机修改订单状态
      * @param order 参数封装
      * @return Result
      */
@@ -45,7 +46,28 @@ public class OrderService {
         result.setDetail(null);
         try {
             orderMapper.driver(order);
-            result.setMsg("订单完成成功");
+            result.setMsg("司机端订单修改成功");
+            result.setSuccess(true);
+            result.setDetail(order);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 货主修改订单状态
+     * @param order 参数封装
+     * @return Result
+     */
+    public Result itemer(Order order) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            orderMapper.itemer(order);
+            result.setMsg("货主端订单修改成功");
             result.setSuccess(true);
             result.setDetail(order);
         } catch (Exception e) {
@@ -58,14 +80,70 @@ public class OrderService {
     /**
      * 显示公共订单
      */
-    public List<Order> getOrderOne() {
-        return orderMapper.getOrderOne();
+    public Result getOrderOne() {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            List<Order> order= orderMapper.getOrderOne();
+            result.setMsg("状态为一的订单获取成功");
+            result.setSuccess(true);
+            result.setDetail(order);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
      * 显示个体订单
      */
-    public List<Order> getOrderDeal(Order order) {
-        return orderMapper.getOrderDeal(order);
+    public Result getOrderDeal(Order order) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            List<Order> orderdeal = orderMapper.getOrderDeal(order);
+            result.setMsg("订单获取成功");
+            result.setSuccess(true);
+            result.setDetail(orderdeal);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Result getItemOrderAll (Order order) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            List<Order> orderdeal = orderMapper.getItemOrderAll(order);
+            result.setMsg("货主端所有订单信息获取完毕");
+            result.setSuccess(true);
+            result.setDetail(orderdeal);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public Result getDriverOrderAll (Order order) {
+        Result result = new Result();
+        result.setSuccess(false);
+        result.setDetail(null);
+        try {
+            List<Order> orderdeal = orderMapper.getDriverOrderAll(order);
+            result.setMsg("司机端所有订单信息获取完毕");
+            result.setSuccess(true);
+            result.setDetail(orderdeal);
+        } catch (Exception e) {
+            result.setMsg(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
 }

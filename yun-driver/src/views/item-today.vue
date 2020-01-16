@@ -36,7 +36,7 @@
             </li>
         </ul>
         <v-scroll class="scroll-class">
-            <item-list :data="OrderInfo"></item-list>
+            <item-list :data="OrderInfo" :backShow=true :backStatus=2></item-list>
         </v-scroll>
     </div>
 </template>
@@ -84,8 +84,8 @@ export default {
     },
     async getOrderInfo () {
       const { data } = await axios.post('/api/order/order_one')
-      // console.log(data)
-      this.OrderInfo = data
+      console.log(data)
+      this.OrderInfo = data.detail
     }
   },
   mounted () {

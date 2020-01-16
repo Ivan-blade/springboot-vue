@@ -9,15 +9,15 @@
         </v-header>
         <ul class="page-index">
             <span>
-                <li @click="goToAll">全部</li>
-                <li @click="goToUn">待确认</li>
-                <li @click="goToTra">运输中</li>
-                <li @click="goToFin">待评价</li>
-                <li>取消/退款</li>
+                <li @click="dataAll">全部</li>
+                <li @click="dataUncomfirm">待确认</li>
+                <li @click="dataTransport">运输中</li>
+                <li @click="dataUncomment">待评价</li>
+                <li @click="dataRefund">取消/退款</li>
             </span>
         </ul>
         <v-scroll class="scroll-class">
-            <item-list :data="OrderInfo"></item-list>
+            <item-list :data="OrderInfo" :backShow="backDecision" :backStatus="subStatus"></item-list>
         </v-scroll>
         <div class="page-content" v-show="!this.OrderInfo">
             <i class="iconfont icon-zanwudingdan"></i>
@@ -47,11 +47,26 @@ export default {
   },
   data () {
     return {
-      OrderInfo: []
+      OrderInfo: [],
+      backDecision: false,
+      subStatus: 1
     }
   },
   methods: {
-    async getOrderInfo_driver () {
+    async getOrderdataAll () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/driver/${this.userId}`,
+        params: {
+          driverPhone: this.userPhone
+        }
+      })
+      this.OrderInfo = data.detail
+      console.log(data)
+      // console.log(this.userId)
+      // console.log(this.userPhone)
+    },
+    async getOrderdataUncomfirm () {
       const { data } = await axios({
         method: 'post',
         url: `/api/order/${this.userId}/2`,
@@ -60,12 +75,10 @@ export default {
           orderStatus: 2
         }
       })
-      this.OrderInfo = data
+      this.OrderInfo = data.detail
       // console.log(data)
-      // console.log(this.userId)
-      // console.log(this.userPhone)
     },
-    async getOrderInfo_un () {
+    async getOrderdataTransport () {
       const { data } = await axios({
         method: 'post',
         url: `/api/order/${this.userId}/3`,
@@ -74,22 +87,10 @@ export default {
           orderStatus: 3
         }
       })
-      this.OrderInfo = data
-      // console.log(data)
+      this.OrderInfo = data.detail
+      console.log(data.detail)
     },
-    async getOrderInfo_tra () {
-      const { data } = await axios({
-        method: 'post',
-        url: `/api/order/${this.userId}/4`,
-        params: {
-          driverPhone: this.userPhone,
-          orderStatus: 4
-        }
-      })
-      this.OrderInfo = data
-      // console.log(data)
-    },
-    async getOrderInfo_fin () {
+    async getOrderdataUncomment () {
       const { data } = await axios({
         method: 'post',
         url: `/api/order/${this.userId}/5`,
@@ -98,24 +99,47 @@ export default {
           orderStatus: 5
         }
       })
-      this.OrderInfo = data
+      this.OrderInfo = data.detail
       // console.log(data)
     },
-    goToAll () {
-      this.getOrderInfo_driver()
+    async getOrderdataRefund () {
+      const { data } = await axios({
+        method: 'post',
+        url: `/api/order/${this.userId}/0`,
+        params: {
+          driverPhone: this.userPhone,
+          orderStatus: 0
+        }
+      })
+      this.OrderInfo = data.detail
+      // console.log(data)
     },
-    goToUn () {
-      this.getOrderInfo_un()
+    dataAll () {
+      this.backDecision = false
+      // console.log(this.backDecision)
+      this.getOrderdataAll()
     },
-    goToFin () {
-      this.getOrderInfo_fin()
+    dataUncomfirm () {
+      this.backDecision = false
+      this.getOrderdataUncomfirm()
     },
-    goToTra () {
-      this.getOrderInfo_tra()
+    dataUncomment () {
+      this.backDecision = false
+      this.getOrderdataUncomment()
+    },
+    dataTransport () {
+      this.subStatus = 4
+      this.backDecision = true
+      this.getOrderdataTransport()
+    },
+    dataRefund () {
+      this.subStatus = 0
+      this.backDecision = false
+      this.getOrderdataRefund()
     }
   },
   mounted () {
-    this.getOrderInfo_driver()
+    this.getOrderdataAll()
   }
 }
 </script>
