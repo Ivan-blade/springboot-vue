@@ -105,9 +105,9 @@ export default {
           url: '/api/order/item',
           params: {
             itemName: this.ItemName,
-            senderName: this.userName,
+            itemerName: this.userName,
             // senderPhone: this.userId,
-            senderPhone: this.userPhone,
+            itemerPhone: this.userPhone,
             carSize: this.CarSize,
             origin: this.Origin,
             destination: this.Destination

@@ -25,7 +25,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Update("update `order` set SenderName=#{senderName},SenderPhone=#{senderPhone},OrderStatus=#{orderStatus} where id=#{id}")
+    @Update("update `order` set ItemerName=#{itemerName},ItemerPhone=#{itemerPhone},OrderStatus=#{orderStatus} where id=#{id}")
     void itemer(Order order);
 
     /**
@@ -33,7 +33,7 @@ public interface OrderMapper {
      * @param order
      * @return
      */
-    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination,SenderName,SenderPhone) values (#{itemName},#{carSize},#{origin},#{destination},#{senderName},#{senderPhone})")
+    @Insert("insert into `order` (ItemName,CarSize,Origin,Destination,ItemerName,ItemerPhone) values (#{itemName},#{carSize},#{origin},#{destination},#{itemerName},#{itemerPhone})")
     //加入该注解可以保存对象后，查看对象插入id
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void item(Order order);
@@ -47,13 +47,13 @@ public interface OrderMapper {
     /**
      * 显示个体订单
      */
-    @Select("select * from `order` where (DriverPhone=#{driverPhone} or SenderPhone=#{senderPhone}) and OrderStatus=#{orderStatus}")
+    @Select("select * from `order` where (DriverPhone=#{driverPhone} or ItemerPhone=#{itemerPhone}) and OrderStatus=#{orderStatus}")
     List<Order> getOrderDeal(Order order);
     
     /**
      * 显示货主所有订单
      */
-    @Select("select * from `order` where SenderPhone=#{senderPhone}")
+    @Select("select * from `order` where ItemerPhone=#{itemerPhone}")
     List<Order> getItemOrderAll(Order order);
 
     /**

@@ -11,15 +11,15 @@ public class Order {
     private int orderStatus;
     private String origin;
     private String destination;
-    private Long senderPhone;
+    private Long itemerPhone;
     private Long driverPhone;
-    private String senderName;
+    private String itemerName;
 
     public Order() {
 
     }
 
-    public Order(Long id, String itemName, String driverName, String carSize, int orderStatus, String origin, String destination, Long senderPhone, Long driverPhone, String senderName){
+    public Order(Long id, String itemName, String driverName, String carSize, int orderStatus, String origin, String destination, Long itemerPhone, Long driverPhone, String itemerName){
         this.id = id;
         this.itemName = itemName;
         this.driverName = driverName;
@@ -27,8 +27,8 @@ public class Order {
         this.orderStatus = orderStatus;
         this.origin = origin;
         this.destination = destination;
-        this.senderName = senderName;
-        this.senderPhone = senderPhone;
+        this.itemerName = itemerName;
+        this.itemerPhone = itemerPhone;
         this.driverPhone = driverPhone;
     }
 
@@ -40,12 +40,12 @@ public class Order {
         this.id = id;
     }
 
-    public Long getSenderPhone() {
-        return senderPhone;
+    public Long getItemerPhone() {
+        return itemerPhone;
     }
 
-    public void setSenderPhone(Long senderPhone) {
-        this.senderPhone = senderPhone;
+    public void setItemerPhone(Long itemerPhone) {
+        this.itemerPhone = itemerPhone;
     }
 
     public Long getDriverPhone() {
@@ -56,12 +56,12 @@ public class Order {
         this.driverPhone = driverPhone;
     }
 
-    public String getsenderName() {
-        return senderName;
+    public String getItemerName() {
+        return itemerName;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setItemerName(String itemerName) {
+        this.itemerName = itemerName;
     }
 
     public String getItemName() {

@@ -56,9 +56,9 @@ export default {
         url: '/api/order/itemer',
         params: {
           id: temp,
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: status,
-          senderName: this.userName
+          itemerName: this.userName
         }
       })
       this.OrderInfo = data

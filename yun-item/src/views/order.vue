@@ -59,7 +59,7 @@ export default {
         method: 'post',
         url: `/api/order/itemer/${this.userId}`,
         params: {
-          senderPhone: this.userPhone
+          itemerPhone: this.userPhone
         }
       })
       this.OrderInfo = data.detail
@@ -70,7 +70,7 @@ export default {
         method: 'post',
         url: `/api/order/${this.userId}/2`,
         params: {
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: 2
         }
       })
@@ -82,7 +82,7 @@ export default {
         method: 'post',
         url: `/api/order/${this.userId}/3`,
         params: {
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: 3
         }
       })
@@ -94,7 +94,7 @@ export default {
         method: 'post',
         url: `/api/order/${this.userId}/4`,
         params: {
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: 4
         }
       })
@@ -106,7 +106,7 @@ export default {
         method: 'post',
         url: `/api/order/${this.userId}/5`,
         params: {
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: 5
         }
       })
@@ -118,7 +118,7 @@ export default {
         method: 'post',
         url: `/api/order/${this.userId}/0`,
         params: {
-          senderPhone: this.userPhone,
+          itemerPhone: this.userPhone,
           orderStatus: 0
         }
       })
