@@ -63,7 +63,7 @@ export default {
         }
       })
       this.OrderInfo = data.detail
-      console.log(data)
+      // console.log(data)
     },
     async getdataConfirm () {
       const { data } = await axios({
@@ -99,7 +99,7 @@ export default {
         }
       })
       this.OrderInfo = data.detail
-      console.log(data)
+      // console.log(data)
     },
     async getdataUncomment () {
       const { data } = await axios({
@@ -126,6 +126,7 @@ export default {
     //   console.log(data)
     },
     dataAll () {
+      this.backDecision = false
       this.getdataAll()
     },
     dataConfirm () {
